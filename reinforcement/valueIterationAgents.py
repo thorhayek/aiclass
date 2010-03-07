@@ -82,12 +82,12 @@ class ValueIterationAgent(ValueEstimationAgent):
     "*** YOUR CODE HERE ***"
     
     #vals = util.Counter()
-    if self.mdp.isTerminal(state) :
+    legal_actions =  self.mdp.getPossibleActions(state)
+    if len(legal_actions) == 0 :
           return None 
     else :
-       legal_actions =  self.mdp.getPossibleActions(state)
-       max = 0
-       best_action = 54 
+       max = -300
+       best_action = None 
        for action in legal_actions :
            temp   =  self.getQValue(state,action) 
            if temp > max :
